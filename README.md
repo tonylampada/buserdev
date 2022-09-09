@@ -10,7 +10,9 @@ Constrói a imagem (ou faz um docker pull)
 docker pull tonylampada/buseredev
 ```
 
-Crie um script de inicialização do seu ambiente assim:
+Crie um script de inicialização do seu ambiente mais ou menos como esse abaixo
+pode ser que precise de alguma customização no script abaixo.
+Por exemplo, meus projetos vivem em \~/work, então essa é a pasta que eu mapeio pra dentro do container
 
 ```
 #!/bin/bash
