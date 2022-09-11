@@ -21,28 +21,44 @@ RUN apt-get update && apt-get install -y wget gpg \
   && useradd -u 1000 -g 1000 -ms /bin/bash -r developer \
   && echo "developer ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/90-developer
 
+# pycharm + plugins
 WORKDIR /opt/pycharm
-
 RUN curl -fsSL $pycharm_source -o /opt/pycharm/installer.tgz \
- && tar --strip-components=1 -xzf installer.tgz \
- && rm installer.tgz \
- && wget https://plugins.jetbrains.com/files/10080/186853/intellij-rainbow-brackets-6.25.zip -O /opt/pycharm/plugins/intellij-rainbow-brackets.zip \
- && unzip /opt/pycharm/plugins/intellij-rainbow-brackets.zip -d /opt/pycharm/plugins \
- && rm /opt/pycharm/plugins/intellij-rainbow-brackets.zip \
- && mkdir -p /opt/pycharm/plugins/monokai-pro-jetbrains/lib \
- && mkdir -p /opt/pycharm/plugins/Statistic/lib \
- && wget https://plugins.jetbrains.com/files/13643/216933/monokai-pro-jetbrains.jar -O /opt/pycharm/plugins/monokai-pro-jetbrains/lib/monokai-pro-jetbrains.jar \
- && wget https://plugins.jetbrains.com/files/4509/215901/Statistic-4.2.3.jar -O /opt/pycharm/plugins/Statistic/lib/Statistic-4.2.3.jar
+  && tar --strip-components=1 -xzf installer.tgz \
+  && rm installer.tgz \
+  && wget https://plugins.jetbrains.com/files/10080/186853/intellij-rainbow-brackets-6.25.zip -O /opt/pycharm/plugins/intellij-rainbow-brackets.zip \
+  && unzip /opt/pycharm/plugins/intellij-rainbow-brackets.zip -d /opt/pycharm/plugins \
+  && rm /opt/pycharm/plugins/intellij-rainbow-brackets.zip \
+  && mkdir -p /opt/pycharm/plugins/monokai-pro-jetbrains/lib \
+  && mkdir -p /opt/pycharm/plugins/Statistic/lib \
+  && wget https://plugins.jetbrains.com/files/13643/216933/monokai-pro-jetbrains.jar -O /opt/pycharm/plugins/monokai-pro-jetbrains/lib/monokai-pro-jetbrains.jar \
+  && wget https://plugins.jetbrains.com/files/4509/215901/Statistic-4.2.3.jar -O /opt/pycharm/plugins/Statistic/lib/Statistic-4.2.3.jar
 
+#RUN echo LANG=en_US.UTF-8 >/etc/locale.conf \
+#  && echo en_US.UTF-8 UTF-8 >/etc/locale.gen
+
+RUN locale-gen en_US.UTF-8 && \
+  dpkg-reconfigure locales && \
+  locale-gen C.UTF-8 && \
+  /usr/sbin/update-locale LANG=C.UTF-8
+
+ENV HOME=/home/developer
 USER developer
-ENV HOME /home/developer
+
+# sublime plugins
+RUN mkdir -p ~/.config/sublime-text/Installed\ Packages ~/.config/sublime-text/Packages/User \
+  && cd ~/.config/sublime-text/Installed\ Packages/ \
+  && wget --quiet https://packagecontrol.io/Package%20Control.sublime-package \
+  && cd ~/.config/sublime-text/Packages/User/ \
+  && wget --quiet https://github.com/tonylampada/buserdev/raw/master/sublime-text-3/Package%20Control.sublime-settings
+
 ENV PYENV_ROOT="${HOME}/.pyenv"
-ENV PATH="${PATH}:/home/developer/bin:${PYENV_ROOT}/bin"
+ENV PATH="${PATH}:/home/developer/bin:${PYENV_ROOT}/bin" LANG=C.UTF-8 LANGUAGE=C.UTF-8 LC_ALL=C.UTF-8
 WORKDIR /home/developer
 COPY --chown=developer:developer bin /home/developer/bin
 
+# pyenv
 RUN curl https://pyenv.run | bash
 RUN echo 'eval "$(pyenv init -)"' >> /home/developer/.bashrc
-
 
 CMD [ "/opt/pycharm/bin/pycharm.sh" ]
