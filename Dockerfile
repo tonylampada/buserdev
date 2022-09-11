@@ -45,12 +45,7 @@ RUN locale-gen en_US.UTF-8 && \
 ENV HOME=/home/developer
 USER developer
 
-# sublime plugins
-RUN mkdir -p ~/.config/sublime-text/Installed\ Packages ~/.config/sublime-text/Packages/User \
-  && cd ~/.config/sublime-text/Installed\ Packages/ \
-  && wget --quiet https://packagecontrol.io/Package%20Control.sublime-package \
-  && cd ~/.config/sublime-text/Packages/User/ \
-  && wget --quiet https://github.com/tonylampada/buserdev/raw/master/sublime-text-3/Package%20Control.sublime-settings
+COPY --chown=developer:developer sublime-text /home/developer/.config/sublime-text
 
 ENV PYENV_ROOT="${HOME}/.pyenv"
 ENV PATH="${PATH}:/home/developer/bin:${PYENV_ROOT}/bin" LANG=C.UTF-8 LANGUAGE=C.UTF-8 LC_ALL=C.UTF-8
