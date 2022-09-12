@@ -10,6 +10,8 @@
 		"RainbowBrackets",
 		"Monokai Dark",
 		"Monokai++",
-		"Theme - Seti Monokai"
+		"Theme - Seti Monokai",
+		"SublimeLinter",
+		"SublimeLinter-eslint"
 	]
 }

@@ -34,10 +34,10 @@ RUN curl -fsSL $pycharm_source -o /opt/pycharm/installer.tgz \
   && wget https://plugins.jetbrains.com/files/13643/216933/monokai-pro-jetbrains.jar -O /opt/pycharm/plugins/monokai-pro-jetbrains/lib/monokai-pro-jetbrains.jar \
   && wget https://plugins.jetbrains.com/files/4509/215901/Statistic-4.2.3.jar -O /opt/pycharm/plugins/Statistic/lib/Statistic-4.2.3.jar
 
-RUN locale-gen en_US.UTF-8 && \
-  dpkg-reconfigure locales && \
-  locale-gen C.UTF-8 && \
-  /usr/sbin/update-locale LANG=C.UTF-8
+RUN locale-gen en_US.UTF-8 \
+  && dpkg-reconfigure locales \
+  && locale-gen C.UTF-8 \
+  && /usr/sbin/update-locale LANG=C.UTF-8
 
 ENV HOME=/home/developer
 USER developer
@@ -46,9 +46,12 @@ ENV PATH="${PATH}:/home/developer/bin:${PYENV_ROOT}/bin" LANG=C.UTF-8 LANGUAGE=C
 WORKDIR /home/developer
 
 # pyenv e nvm
+RUN sudo mv /bin/sh /bin/origsh && sudo ln -s /bin/bash /bin/sh
 RUN curl https://pyenv.run | bash \
   && echo 'eval "$(pyenv init -)"' >> /home/developer/.bashrc \
-  && curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+  && curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash \
+  && . ~/.nvm/nvm.sh && nvm install --lts \
+  && sudo rm /bin/sh && sudo mv /bin/origsh /bin/sh
 
 COPY --chown=developer:developer bin /home/developer/bin
 COPY --chown=developer:developer sublime-text /home/developer/.config/sublime-text
