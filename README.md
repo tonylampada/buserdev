@@ -1,7 +1,7 @@
 # buserdev
 
 Estou experimentando com a ideia de ter um "ambdev como código" - uma imagem docker que já tem:
-* pyenv, pycharm, sublime, android-studio ()
+* pyenv, nvm, fvm, pycharm, sublime, e até a trolha do android-studio
 * com uns plugins bacanas do sublime e do pycharm
 * e com algumas dependências básicas que os projetos precisam
 
