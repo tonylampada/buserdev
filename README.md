@@ -9,6 +9,10 @@ E aí vc trabalha sempre rodando suas ferramentas dentro de um container que já
 * Vantagem: vc ganha tempo
 * Desvantagem: talvez isso te deixe com preguiça de atualizar suas ferramentas de trabalho
 
+Olha esse videozinho mostrando como isso é maneiro :-)
+
+[![Ambdev como código](https://img.youtube.com/vi/oR9YbUcfWqI/0.jpg)](https://www.youtube.com/watch?v=oR9YbUcfWqI)
+
 Howto:
 
 Constrói a imagem (ou faz um docker pull)
