@@ -1,13 +1,13 @@
 #!/bin/bash
 if [[ ! -d ~/.buserdev ]]; then
-  mkdir -p ~/.buserdev/home
+  mkdir -p ~/.buserdev
   cid=$(docker create tonylampada/buserdev)
-  docker cp $cid:/home/developer ~/.buserdev/home
+  docker cp $cid:/home/developer ~/.buserdev
   docker rm -v $cid
 else 
   # echo nop
   cid=$(docker create tonylampada/buserdev)
-  # docker cp $cid:/home/developer ~/.buserdev/home
+  # docker cp $cid:/home/developer ~/.buserdev
   docker rm -v $cid
 fi
 
