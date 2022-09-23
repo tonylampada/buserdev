@@ -32,4 +32,6 @@ Pode ser que precise de alguma customização, é bom vc entender o que tá rola
 * Esses negócio de xhost, X11, DISPLAY é pra gente poder rodar programas com interface gráfica (pycharm) dentro do container
 * O meu default é rodar o bash. Vc pode querer rodar o pycharm por default.
 
+### Exemplos
+
 * Exemplo: [trabalhando com flutter](README-flutter-howto.md)

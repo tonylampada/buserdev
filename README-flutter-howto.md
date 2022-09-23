@@ -12,7 +12,7 @@ Os comandos abaixo é pra te guiar pra subir um projeto flutter (não é pra sel
 
 ```bash
 cd ~/work
-git clone https://github.com/devonfw-forge/devonfw4flutter-mts-app.git  # um projeto flutter qualquer que eu achei no github
+git clone https://github.com/tonylampada/devonfw4flutter-mts-app.git  # um projeto flutter qualquer que eu achei no github
 cd devonfw4flutter-mts-app
 fvm install 1.17.0 # no repo nao fala, mas essa versao velha do flutter vai funcionar com esse projeto aih
 fvm use 1.17.0 # isso aih vai criar a pasta .fvm no projeto (se o codigo fosse seu vc deveria botar isso no .gitignore)
