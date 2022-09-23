@@ -65,6 +65,6 @@ E pra debugar?
 
 # Debugando flutter com o vscode
 
-Tem um pulo do gato bacana que é o usar o vscode com o "plugin de teletransporte" dele. Mais fácil explicar isso com um vídeo.
+Tem um pulo do gato bacana que é o usar o vscode com o "plugin de teletransporte" dele. Mais fácil explicar isso com um vídeo, veja.
 
 [![Debugando flutter com vscode](https://img.youtube.com/vi/xMLyS0B4cK0/0.jpg)](https://www.youtube.com/watch?v=xMLyS0B4cK0)
