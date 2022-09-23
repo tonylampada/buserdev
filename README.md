@@ -1,11 +1,11 @@
 # buserdev
 
-Estou experimentando com a ideia de ter um "ambdev como código" - uma imagem docker que já tem:
-* pyenv, nvm, fvm, pycharm, sublime, android-sdk com emulador e tudo
-* com uns plugins bacanas do sublime e do pycharm
-* e com algumas dependências básicas que os projetos precisam
+Estou experimentando com a ideia de ter um "ambdev como código" - uma imagem docker que já vem com as ferramentas necessarias pra trabalhar com:
+* backend em python
+* frontend com vue (ou qq outra coisa que dependa do node)
+* mobile com flutter/android
 
-E aí vc trabalha sempre rodando suas ferramentas dentro de um container que já tem tudo que vc precisa
+E o pulo do gato é que a imagem já vem com ferramentas gráficas (tipo o Pycharm e o Sublime) e vc consegue rodá-las como se tivesse local, e o debug funciona. Ou seja vc trabalha sempre rodando suas ferramentas dentro de um container que já tem tudo que vc precisa.
 * Vantagem: vc ganha tempo
 * Desvantagem: talvez isso te deixe com preguiça de atualizar suas ferramentas de trabalho
 
@@ -20,7 +20,7 @@ Constrói a imagem (ou faz um docker pull)
 ```bash
 ./build.sh
 # ou
-docker pull tonylampada/buseredev
+docker pull tonylampada/buserdev
 ```
 
 Crie um script pra ativar seu ambdev mais ou menos como o [buserdev.sh](buserdev.sh)
@@ -32,17 +32,4 @@ Pode ser que precise de alguma customização, é bom vc entender o que tá rola
 * Esses negócio de xhost, X11, DISPLAY é pra gente poder rodar programas com interface gráfica (pycharm) dentro do container
 * O meu default é rodar o bash. Vc pode querer rodar o pycharm por default.
 
-## exemplo com flutter
-
-Depois de entrar no seu container
-
-```bash
-fvm install 3.3.2 # ou outra versao que seu projeto precisa 
-cd seu/projeto/flutter
-fvm use 3.3.2
-sdkmanager "platforms;android-31" "system-images;android-31;default;x86" "build-tools;28.0.3"
-flutter doctor
-
-avdmanager create avd --name android31 --package "system-images;android-31;default;x86"
-emulator -avd android31
-```
+* Exemplo: [trabalhando com flutter](README-flutter-howto.md)
