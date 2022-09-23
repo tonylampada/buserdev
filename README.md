@@ -34,4 +34,5 @@ Pode ser que precise de alguma customização, é bom vc entender o que tá rola
 
 ### Exemplos
 
-* Exemplo: [trabalhando com flutter](README-flutter-howto.md)
+* Vc já viu como trabalhar com Python e Vue.js [no vídeo acima](https://www.youtube.com/watch?v=oR9YbUcfWqI)
+* Veja aqui como vc faz pra [trabalhar com flutter também](README-flutter-howto.md)
