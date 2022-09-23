@@ -30,3 +30,40 @@ flutter doctor # "no devices". Beleza bora criar um device...
 avdmanager create avd --name android33 --package "system-images;android-33;google_apis;x86_64"
 emulator -avd android33
 ```
+
+E funciona \o/
+
+<img src="https://user-images.githubusercontent.com/218821/191873180-b6d5f1a9-5784-44c0-b96e-200f05d44f56.png" width="300">
+
+```bash
+# continuando
+flutter doctor  # agora ele ta chorando que nao tem android-studio, mas isso eh feature e nao bug
+
+flutter devices  # agora ele ve o nosso device novinho
+
+flutter pub get  # isso aih eh tipo o "npm install" do dart (sinceramente nem sei onde ele baixa as coisas)
+flutter run  # hora da verdade (relaxa isso demora)
+```
+
+Eita deu pau.
+
+![image](https://user-images.githubusercontent.com/218821/191874709-82f8a264-27a5-46a8-8680-e3381d70488e.png)
+
+insuficcient storage. ops.
+
+Mas aí vc edita esse arquivo `config.ini` do emulador, reinicia ele e tenta de novo
+![image](https://user-images.githubusercontent.com/218821/191874895-43df9c2d-e178-4187-ada5-f29fb39510d5.png)
+
+(Reparou eu tirando onda aih com meu sublime tunado intra-container né)
+
+Aih vc manda o `flutter run` que ele vai.
+
+![image](https://user-images.githubusercontent.com/218821/191875061-8d7ebd53-2dc9-4d48-ba84-98f35c80a04e.png)
+
+Maravilha. Flutter rodando na linha de comando. Sem Android Studio. 
+E pra debugar?
+
+# Debugando flutter com o vscode
+
+Tem um pulo do gato bacana que é o usar o vscode com o "plugin de teletransporte" dele.
+TODO: continuar isso aqui
