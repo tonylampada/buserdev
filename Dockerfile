@@ -22,7 +22,7 @@ RUN wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | gpg --dearmo
   wait-for-it jq libgdal-dev locales supervisor libmagic-dev build-essential libgeos-dev libffi-dev libxml2-dev libxslt1-dev rustc cargo \
   # && rm -rf /var/lib/apt/lists/* \
   && apt-get clean && rm -rf /tmp/* /var/tmp/*
-RUN apt-get install --no-install-recommends -y xdg-utils fonts-liberation \ 
+RUN apt-get install --no-install-recommends -y xdg-utils fonts-liberation android-sdk-platform-tools-common \ 
   && wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \
   && dpkg -i google-chrome-stable_current_amd64.deb \
   && rm google-chrome-stable_current_amd64.deb
@@ -33,7 +33,8 @@ RUN locale-gen en_US.UTF-8 \
   && groupadd -g 1000 -r developer \
   && useradd -u 1000 -g 1000 -ms /bin/bash -r developer \
   && echo "developer ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/90-developer \
-  && adduser developer kvm
+  && adduser developer kvm \
+  && adduser developer plugdev
 
 # pycharm + plugins
 WORKDIR /opt/pycharm
